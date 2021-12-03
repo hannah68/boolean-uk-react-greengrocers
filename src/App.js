@@ -1,43 +1,40 @@
 import './styles/reset.css'
 import './styles/index.css'
+import data from './db.json'
+import {useState} from 'react';
+import StoreItems from './StoreItems';
+import CartItems from './CartItems'
+console.log(data);
 
-/*
-Here's what a store item should look like
-{
-  id: '001-beetroot',
-  name: 'beetroot',
-  price: 0.35
-}
 
-What should a cart item look like? 🤔
-*/
 
-const initialStoreItems = []
+// What should a cart item look like? 🤔
+// */
+
+
 
 export default function App() {
-  // Setup state here...
+
+  const initialStoreItems = data.items;
+  const [storeItems, setStoreItems] = useState(initialStoreItems);
 
   return (
     <>
       <header id="store">
         <h1>Greengrocers</h1>
-        <ul class="item-list store--item-list">
-          {/* Wrtite some code here... */}
-        </ul>
+        <StoreItems storeItems={storeItems}/>
       </header>
       <main id="cart">
         <h2>Your Cart</h2>
-        <div class="cart--item-list-container">
-          <ul class="item-list cart--item-list">
-            {/* Wrtite some code here... */}
-          </ul>
+        <div className="cart--item-list-container">
+          {/* <CartItems/> */}
         </div>
-        <div class="total-section">
+        <div className="total-section">
           <div>
             <h3>Total</h3>
           </div>
           <div>
-            <span class="total-number">£0.00</span>
+            <span className="total-number">£0.00</span>
           </div>
         </div>
       </main>
